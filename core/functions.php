@@ -1,5 +1,7 @@
 <?php
 
+use Core\Response;
+
 function dd($variable, $die = true) {
 	echo "<pre>";
 	var_dump($variable);
