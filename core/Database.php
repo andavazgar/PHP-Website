@@ -38,7 +38,7 @@ class Database {
 		$result = $this->find();
 
 		if(! $result) {
-			abort();
+			Router::abort();
 		}
 
 		return $result;

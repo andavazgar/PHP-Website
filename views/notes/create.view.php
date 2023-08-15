@@ -9,7 +9,7 @@
 		</p>
 
 		<div>
-			<form method="POST">
+			<form method="POST" action="/notes">
 					<div class="col-span-full">
 						<label for="body" class="block text-sm font-medium leading-6 text-gray-900">Description</label>
 						<div class="mt-2">

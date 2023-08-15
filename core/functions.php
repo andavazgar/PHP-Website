@@ -1,6 +1,8 @@
 <?php
 
+use Core\Router;
 use Core\Response;
+
 
 function dd($variable, $die = true) {
 	echo "<pre>";
@@ -17,7 +19,7 @@ function urlIs(string $value): bool {
 
 function authorize(bool $condition, int $statusCode = Response::FORBIDDEN): void {
 	if(! $condition) {
-		abort($statusCode);
+		Router::abort($statusCode);
 	}
 }
 
