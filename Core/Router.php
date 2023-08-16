@@ -3,6 +3,7 @@
 namespace Core;
 
 class Router {
+	protected const CONTROLLERS_DIRECTORY = 'Http/controllers/';
 	protected static $routes = [];
 
 	protected static function addRoute(string $method, string $uri, string $controller): self {
@@ -44,12 +45,16 @@ class Router {
 					$route->getMiddleware()::handle();
 				}
 				
-				require base_path($route->getController());
+				require base_path(self::CONTROLLERS_DIRECTORY . $route->getController());
 				return;
 			}
 		}
 
 		self::abort();
+	}
+
+	public static function previousUrl(): string {
+		return $_SERVER['HTTP_REFERER'];
 	}
 
 	public static function abort(int $code = 404) {

@@ -33,18 +33,11 @@ function view(string $path, array $attributes = []): void {
 	require base_path("views/{$path}");
 }
 
-function login($user) {
-	$_SESSION['user'] = [
-		'email' => $user['email']
-	];
+function redirect(string $path) {
+	header("Location: {$path}");
+	exit();
+}
 
-	session_regenerate_id(true);
- }
-
- function logout() {
-	$_SESSION = [];
-	session_destroy();
-
-	$params = session_get_cookie_params();
-	setcookie('PHPSESSID', '', time() - 3600, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+function old(string $key, mixed $default = ''): mixed {
+	return \Core\Session::get('old')[$key] ?? $default;
 }
